@@ -1,0 +1,13 @@
+{% extends "schedule/base.html" %}
+
+{% block title %}
+Login Here
+{% endblock %}
+
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+    <table>{{ form.as_table }}</table>
+    <button type="submit" class="btn btn-success">Login</button>
+    </form>
+{% endblock %}

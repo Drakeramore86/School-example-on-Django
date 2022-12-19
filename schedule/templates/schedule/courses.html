@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course</title>
+</head>
+<body>
+<a href="{% url 'main' %}">HyperSchool</a>
+<p><b>Feel free to choose any course</b></p>
+<p><b>you are interested in!</b></p>
+<p><b>Upgrade your professional skills</b></p>
+<p><b>with our school!</b></p>
+<div>
+    <h2>Name of the program: {{course.title}}</h2>
+</div>
+<div>
+    {{course.info}}
+    <p>Course duration: {{course.duration_months}} months</p>
+    <p>Total price: {{course.price}} $</p>
+</div>
+<div>
+    <h2>Teachers of the course:</h2>
+    {% for teacher in course.teacher.all %}
+        <a href="/schedule/teacher_details/{{teacher.id}}">{{teacher.name}} {{teacher.surname}}</a>
+    {% endfor %}
+</div>
+
+<div>
+    <h2>Already studying:</h2>
+        {% for student in students %}
+        <p>{{ student }}</p>
+        {% endfor %}
+    <br><br>
+</div>
+<div>
+    <h2>Join us!</h2>
+    <a href="/schedule/add_course/">Apply to the course {{course.title}}</a>
+</div>
+
+</body>
+</html>
